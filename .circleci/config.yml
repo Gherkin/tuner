@@ -8,4 +8,4 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            docker build -t $DOCKER_REGISTRY_URL/tuner:$CIRCLE_SHA1 .
+            docker build -t 645001498044.dkr.ecr.eu-north-1.amazonaws.com/niyohn/tuner:$CIRCLE_SHA1 .
