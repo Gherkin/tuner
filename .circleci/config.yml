@@ -3,10 +3,10 @@ docker-registry-url: &docker_registry_url 645001498044.dkr.ecr.eu-north-1.amazon
 jobs:
   build:
     docker:
-      - image: alpine:3.7
+      - image: docker:latest
     steps:
       - run:
           name: Build Docker Image
           command: |
             docker build -t $DOCKER_REGISTRY_URL/tuner:$CIRCLE_SHA1 .
-          docker push $DOCKER_REGISTRY_URL/tuner:latest
+            docker push $DOCKER_REGISTRY_URL/tuner:latest
