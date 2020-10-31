@@ -9,4 +9,3 @@ jobs:
           name: Build Docker Image
           command: |
             docker build -t $DOCKER_REGISTRY_URL/tuner:$CIRCLE_SHA1 .
-            docker push $DOCKER_REGISTRY_URL/tuner:latest
