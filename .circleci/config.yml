@@ -12,3 +12,10 @@ jobs:
             docker build -t $DOCKER_REGISTRY_URL/niyohn/tuner:$CIRCLE_SHA1 .
             echo $(aws ecr get-authorization-token --region $AWS_REGION --output text --query 'authorizationData[].authorizationToken'     | base64 -d | cut -d: -f2) | docker login -u AWS $DOCKER_REGISTRY_URL --password-stdin
             docker push $DOCKER_REGISTRY_URL/niyohn/tuner:$CIRCLE_SHA1
+
+workflows:
+  version: 2.1
+  build-and-deploy:
+    jobs:
+      - build:
+        context: aws
