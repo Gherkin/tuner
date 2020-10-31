@@ -1,7 +1,7 @@
 // Make an instance of two and place it on the page.
 const elem = document.getElementById('draw-shapes');
 const sampleRate = 44000;
-const samples = 44000;
+const samples = 32768;
 
 let height = document.body.clientHeight;
 let width = document.body.clientWidth;
@@ -26,7 +26,6 @@ function draw_ticks(two, cx, cy, r, n) {
   let f = function(n, o, l) {
     for (let i = 0; i < n; i++) {
       let a = i * (Math.PI - 2 * o ) / (n - 1);
-      console.log(i);
       let x = Math.cos(a + o);
       let y = Math.sin(a  + o);
       line = two.makeLine(cx + x * r - x * l, cy - y * r + y * l, cx + x * r, cy - y * r);
@@ -107,9 +106,6 @@ function freq_to_note(freq) {
   n = Math.log(freq / A4) / Math.log(Math.pow(2, 1 / 12));
   let tone_freq = 440 * Math.pow(Math.pow(2, 1/12), Math.round(n));
   let cents = Math.log(freq / tone_freq) / Math.log(Math.pow(Math.pow(2, 1/12), 1/100));
-  console.log(n);
-  console.log(freq);
-  console.log(cents);
   let step = Math.round(n) + 9;
   if(notes[step < 0 ? 11 + step % 12 : step % 12] === undefined) {
     console.log(step);
