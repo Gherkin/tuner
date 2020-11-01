@@ -14,7 +14,8 @@ jobs:
             docker push $DOCKER_REGISTRY_URL/niyohn/tuner:$CIRCLE_SHA1
 
 workflows:
-  jobs:
-    build-and-deploy:
+  version: 2
+  build-and-deploy:
+    jobs:
       - build:
         context: aws
