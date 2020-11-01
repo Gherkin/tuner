@@ -18,4 +18,4 @@ workflows:
   build-and-deploy:
     jobs:
       - build:
-        context: aws
+          context: aws
