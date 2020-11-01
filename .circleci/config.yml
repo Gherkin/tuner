@@ -6,6 +6,10 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+          name: Install AWS
+          command: |
+            apk add --update --no-cache curl jq python3 py-pip
+            pip3 install -q --upgrade --no-cache-dir awscli
           name: Build Docker Image
           command: |
             docker build -t $DOCKER_REGISTRY_URL/niyohn/tuner:$CIRCLE_SHA1 .
